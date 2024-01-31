@@ -1,3 +1,4 @@
+import os
 from flask import Flask, jsonify
 
 app = Flask(__name__)
@@ -32,9 +33,8 @@ sample_data = [
     }
 ]
 
-@app.route('/employees', methods=['GET'])
+@app.route('/', methods=['GET'])
 def get_employees():
     return jsonify(sample_data)
-
-if __name__ == '__main__':
-    app.run()
+if __name__ == "__main__":
+    app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
